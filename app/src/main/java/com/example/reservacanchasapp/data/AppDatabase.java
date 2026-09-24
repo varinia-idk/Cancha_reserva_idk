@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 
 import com.example.reservacanchasapp.data.dao.ClienteDao;
 import com.example.reservacanchasapp.data.dao.CanchaDao;
+import com.example.reservacanchasapp.data.dao.DisciplinaDao;
 import com.example.reservacanchasapp.data.dao.PagoDao;
 import com.example.reservacanchasapp.data.dao.ReservaDao;
 import com.example.reservacanchasapp.data.entity.Cliente;
@@ -30,6 +31,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ClienteDao clienteDao();
     public abstract CanchaDao canchaDao();
+    public abstract DisciplinaDao disciplinaDao();
     public abstract ReservaDao reservaDao();
     public abstract PagoDao pagoDao();
 
@@ -52,5 +54,20 @@ public abstract class AppDatabase extends RoomDatabase {
             }
         }
         return INSTANCE;
+    }
+
+    public void asegurarDatosIniciales() {
+        databaseWriteExecutor.execute(() -> runInTransaction(() -> {
+            if (canchaDao().contarTodas() == 0) {
+                canchaDao().insertar(new Cancha("Cancha Fútbol 5", "Fútbol 5", 80, "Activa"));
+                canchaDao().insertar(new Cancha("Cancha Fútbol 7", "Fútbol 7", 120, "Activa"));
+                canchaDao().insertar(new Cancha("Cancha de Vóley", "Vóley", 60, "Activa"));
+            }
+            if (disciplinaDao().contarTodas() == 0) {
+                disciplinaDao().insertar(new Disciplina("Fútbol", "Fútbol sala y fútbol 7"));
+                disciplinaDao().insertar(new Disciplina("Vóley", "Voleibol"));
+                disciplinaDao().insertar(new Disciplina("Básquet", "Baloncesto"));
+            }
+        }));
     }
 }

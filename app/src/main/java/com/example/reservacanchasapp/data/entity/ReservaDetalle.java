@@ -50,6 +50,13 @@ import androidx.room.PrimaryKey;
         public void setIdReserva(int idReserva) { this.idReserva = idReserva; }
         public int getIdCancha() { return idCancha; }
         public int getIdDisciplina() { return idDisciplina; }
+        public void setIdCancha(int idCancha) { this.idCancha = idCancha; }
+        public void setIdDisciplina(int idDisciplina) { this.idDisciplina = idDisciplina; }
+        public void setFechaJuego(String fechaJuego) { this.fechaJuego = fechaJuego; }
+        public void setHoraInicio(String horaInicio) { this.horaInicio = horaInicio; }
+        public void setHoraFin(String horaFin) { this.horaFin = horaFin; }
+        public void setPrecioUnitario(double precioUnitario) { this.precioUnitario = precioUnitario; }
+        public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
         public String getFechaJuego() { return fechaJuego; }
         public String getHoraInicio() { return horaInicio; }
         public String getHoraFin() { return horaFin; }

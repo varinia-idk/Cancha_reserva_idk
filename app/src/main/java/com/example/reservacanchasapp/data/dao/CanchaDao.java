@@ -20,4 +20,10 @@ public interface CanchaDao {
 
     @Query("SELECT * FROM canchas WHERE idCancha = :id")
     Cancha obtenerPorId(int id);
+
+    @Query("SELECT * FROM canchas WHERE estado = 'Activa' ORDER BY nombre")
+    List<Cancha> obtenerActivasAhora();
+
+    @Query("SELECT COUNT(*) FROM canchas")
+    int contarTodas();
 }

@@ -41,4 +41,6 @@ public class Pago {
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
     public String getFechaPago() { return fechaPago; }
+    public void setFechaPago(String fechaPago) { this.fechaPago = fechaPago; }
+    public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
 }

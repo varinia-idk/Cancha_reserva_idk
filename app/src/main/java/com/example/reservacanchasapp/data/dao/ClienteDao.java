@@ -31,4 +31,7 @@ public interface ClienteDao {
 
     @Query("SELECT * FROM clientes WHERE email = :email LIMIT 1")
     Cliente buscarPorEmail(String email);
+
+    @Query("SELECT * FROM clientes ORDER BY apellido, nombre")
+    List<Cliente> obtenerTodosAhora();
 }

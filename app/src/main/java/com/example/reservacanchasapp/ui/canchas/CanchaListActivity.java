@@ -27,8 +27,16 @@ public class CanchaListActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(CanchaViewModel.class);
 
         adapter = new CanchaAdapter(new ArrayList<>(), cancha -> {
+            int idCliente = getIntent().getIntExtra("idCliente", -1);
+            if (idCliente < 0) {
+                Intent elegirCliente = new Intent(this, com.example.reservacanchasapp.ui.clientes.ClienteListActivity.class);
+                elegirCliente.putExtra("seleccionarCliente", true);
+                startActivity(elegirCliente);
+                return;
+            }
             Intent intent = new Intent(this, NuevaReservaActivity.class);
             intent.putExtra("idCancha", cancha.getIdCancha());
+            intent.putExtra("idCliente", idCliente);
             startActivity(intent);
         });
 
@@ -36,6 +44,11 @@ public class CanchaListActivity extends AppCompatActivity {
         binding.rvCanchas.setAdapter(adapter);
 
         viewModel.obtenerTodasLasCanchas().observe(this,
-                lista -> adapter.actualizarLista(lista));
+                lista -> {
+                    adapter.actualizarLista(lista);
+                    if (lista == null || lista.isEmpty()) {
+                        android.widget.Toast.makeText(this, "No hay canchas activas disponibles.", android.widget.Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }

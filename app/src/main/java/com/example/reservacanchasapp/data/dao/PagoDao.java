@@ -26,4 +26,7 @@ public interface PagoDao {
 
     @Query("UPDATE pagos SET estado = :nuevoEstado WHERE idPago = :idPago")
     void cambiarEstado(int idPago, String nuevoEstado);
+
+    @Query("SELECT COUNT(*) FROM pagos WHERE idReservaDetalle = :idDetalle AND estado = 'Pagado'")
+    int contarPagosPagados(int idDetalle);
 }

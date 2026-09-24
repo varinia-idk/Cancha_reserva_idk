@@ -13,4 +13,5 @@ public class DetalleConNombres {
 
     public String nombreCancha;
     public String nombreDisciplina;
+    public int pagosPagados;
 }
