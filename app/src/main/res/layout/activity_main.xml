@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reserva de Canchas"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/btnCanchas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Canchas"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnClientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Clientes"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnReservas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Reservas"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnNuevaReserva"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nueva Reserva" />
+
+</LinearLayout>
